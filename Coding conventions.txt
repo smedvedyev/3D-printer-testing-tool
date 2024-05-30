@@ -1,0 +1,5 @@
+constants ALLCAPPITAL
+Variables camelCasing
+Functions PascalCasing()
+Pin function+PIN --> REDLED1PIN
+if(X + Y < 5)

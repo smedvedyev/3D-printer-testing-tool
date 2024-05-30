@@ -1,0 +1,56 @@
+[plantuml, class-diagram, svg]
+----
+@startuml
+class Form1{
+    -stepperTopic : string
+    +Form1()
+    -MapRange(value, originalMin, originalMax, newMin, newMax) : int
+    -SwitchPage(page) : void
+    -BtnSetNuD_Click(sender, e) : void
+    -btnStartTesting_Click(sender, e) : void
+    -btnReset_Click(sender, e) : void
+    -TrackbarX_MouseUp(sender, e) : void
+    -TrackbarY_MouseUp(sender, e) : void
+    -TrackbarZ_MouseUp(sender, e) : void
+    -Form1_FormClosed(sender, e) : void
+    }
+
+class Client{
+    +PublishOnClick(message: string, topic: string): void
+    +Unsubscribe(): void
+    +Disconnect(): void
+    -AddListItemMethod(): void
+    -Client_MqttMsgSubscribed(): void
+    -Client_MqttMsgPublishReceived(): void
+    -Client_MqttMsgPublished():void
+    -Client_MqttMsgUnsubscribed():void
+
+}
+
+
+
+class Extruder{ 
+    -lbExtTemp:Label
+    -lbFanStat:Label
+    +HandleHeatingMessage(heatingMessage: string, dataType: string):void
+}
+
+class Cabinet{
+         -labelHum: Label
+        -labelTemp: Label
+         -lbBedLevelling: Label
+        - labelFilament: Label
+         -labelDoor: Label
+         -panel: Panel
+
+         +UpdateValueCabinet(message: string, dataType: string): void
+         +GetBedLevelling(bedMessage: string): void
+
+}
+
+Form1 --* Client
+Client --* Extruder
+Client --* Cabinet
+
+@enduml
+----
